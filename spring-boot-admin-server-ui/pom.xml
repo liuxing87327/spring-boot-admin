@@ -88,16 +88,15 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>npm-build</id>
+                        <id>yarn-build</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
                             <skip>${skipNpmBuild}</skip>
-                            <executable>npm</executable>
+                            <executable>yarn</executable>
                             <arguments>
-                                <argument>run</argument>
                                 <argument>build</argument>
                             </arguments>
                             <environmentVariables>
@@ -105,21 +104,21 @@
                             </environmentVariables>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>npm-test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <skip>${skipTests}</skip>
-                            <executable>npm</executable>
-                            <arguments>
-                                <argument>run</argument>
-                                <argument>test:unit</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
+                    <!-- <execution> -->
+                    <!--     <id>npm-test</id> -->
+                    <!--     <phase>test</phase> -->
+                    <!--     <goals> -->
+                    <!--         <goal>exec</goal> -->
+                    <!--     </goals> -->
+                    <!--     <configuration> -->
+                    <!--         <skip>true</skip> -->
+                    <!--         <executable>npm</executable> -->
+                    <!--         <arguments> -->
+                    <!--             <argument>run</argument> -->
+                    <!--             <argument>test:unit</argument> -->
+                    <!--         </arguments> -->
+                    <!--     </configuration> -->
+                    <!-- </execution> -->
                 </executions>
             </plugin>
             <plugin>

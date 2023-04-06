@@ -23,8 +23,10 @@ Or just start the [spring-boot-admin-sample-servlet](../spring-boot-admin-sample
 
 ### Build
 ```shell
-npm install
-npm run build
+#npm install
+#npm run build
+
+yarn build
 ```
 
 Repeated build with watching the files:
@@ -40,4 +42,9 @@ npm run test
 Repeated tests with watching the files:
 ```shell
 npm run watch:test
+```
+
+重新打包
+```shell
+mvn deploy -Dcheckstyle.skip=true
 ```

@@ -35,6 +35,10 @@
           <font-awesome-icon icon="heartbeat" />&nbsp;
           <span v-text="instance.registration.healthUrl" />
         </a>
+        <a class="button is-small " :href="hystrixDashboard" target="_blank">
+            <font-awesome-icon icon="wrench" />&nbsp;
+            <span v-text="hystrixDashboard" />
+        </a>
       </div>
     </div>
     <hr>
@@ -123,30 +127,33 @@
       metrics: []
     }),
     computed: {
-      hasCaches() {
-        return this.hasMetric('cache.gets');
-      },
-      hasDatasources() {
-        return this.hasMetric('data.source.active.connections');
-      },
-      hasGc() {
-        return this.hasMetric('jvm.gc.pause');
-      },
-      hasInfo() {
-        return this.instance.hasEndpoint('info');
-      },
-      hasMemory() {
-        return this.hasMetric('jvm.memory.max');
-      },
-      hasProcess() {
-        return this.hasMetric('process.uptime');
-      },
-      hasThreads() {
-        return this.hasMetric('jvm.threads.live');
-      },
-      hasMetadata() {
-        return this.instance.registration && this.instance.registration.metadata;
-      }
+        hasCaches() {
+            return this.hasMetric('cache.gets');
+        },
+        hasDatasources() {
+            return this.hasMetric('data.source.active.connections');
+        },
+        hasGc() {
+            return this.hasMetric('jvm.gc.pause');
+        },
+        hasInfo() {
+            return this.instance.hasEndpoint('info');
+        },
+        hasMemory() {
+            return this.hasMetric('jvm.memory.max');
+        },
+        hasProcess() {
+            return this.hasMetric('process.uptime');
+        },
+        hasThreads() {
+            return this.hasMetric('jvm.threads.live');
+        },
+        hasMetadata() {
+            return this.instance.registration && this.instance.registration.metadata;
+        },
+        hystrixDashboard() {
+            return '/hystrix/monitor?stream=' + encodeURIComponent(this.instance.registration.serviceUrl + 'actuator/hystrix.stream') + '&delay=5000&title=' + this.instance.registration.name;
+        }
     },
     created() {
       this.fetchMetricIndex();
